@@ -2,7 +2,6 @@ import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.TimeInfo;
 
 import java.net.InetAddress;
-
 import java.util.Scanner;
 
 public class Task4 {
