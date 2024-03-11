@@ -20,8 +20,7 @@ public class Task4 {
 
             processTimeInfo(info);
         } catch (Exception e) {
-
-            e.printStackTrace();
+            System.out.println("Ein Fehler ist aufgetreten: " + e.getMessage());
         } finally {
             client.close();
         }

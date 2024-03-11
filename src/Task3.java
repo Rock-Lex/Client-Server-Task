@@ -13,7 +13,6 @@ public class Task3 {
             }
         } catch (IOException e) {
             System.out.println("Ein Fehler ist aufgetreten: " + e.getMessage());
-            e.printStackTrace();
         }
     }
     public static void main(String[] args) {
