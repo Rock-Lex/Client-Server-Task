@@ -3,6 +3,7 @@ import org.apache.commons.net.ntp.TimeInfo;
 
 import java.net.InetAddress;
 import java.util.Scanner;
+import java.time.Duration;
 
 /*
 Implementieren Sie einen NTP-Client (Network Time Protocol)
@@ -20,11 +21,11 @@ Bewertung zur Verwendung von NTP-Zeitservern
 public class Task4 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         String ntpServerAddress = scanner.next();
         NTPUDPClient client = new NTPUDPClient();
 
-        client.setDefaultTimeout(10000);
+        Duration timeOut = Duration.ofSeconds(10);
+        client.setDefaultTimeout(timeOut);
         try {
             client.open();
             InetAddress hostAddr = InetAddress.getByName(ntpServerAddress);

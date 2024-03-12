@@ -31,6 +31,7 @@ public class Task3 {
         System.out.println("Wähle z.B. time.nist.gov aus, time.fu-berlin.de, ntp.dianacht.de, " + 
         "zeit.fu-berlin.de");
         
+        System.out.print("Eingabe: ");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.next();
 
