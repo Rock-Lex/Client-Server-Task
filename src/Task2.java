@@ -19,7 +19,8 @@ public class Task2 {
         Scanner scanner = new Scanner(System.in);
         String choice = "";
         while (true) {
-            System.out.println("Translation: \n1. Domain to IP\n2. IP to Domain\n0. exit");
+            System.out.println("Translation: \n1. Domain to IP\n"
+    + "2. IP to Domain\n0. exit");
             choice = scanner.nextLine();
             int choice_i = -2;
 
