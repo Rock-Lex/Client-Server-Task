@@ -3,6 +3,14 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
+/*
+Machen Sie sich mit den Standardbefehlen von Telnet (alle Betriebssysteme) vertraut und dokumentieren Sie diese.
+Recherchieren Sie nach mindestes 3 freien Telnet-basierten Servern und versuchen Sie sich auf diese zu verbinden.
+Für welche Anwendungsbereiche (Serverarten, Aufgaben, ...) wurde bzw. wird Telnet eingesetzt?
+Welche Vor- und Nachteile sehen Sie in der Verwendung des Telnet- Protokolls.
+ */
+
+
 public class Task6 {
 
     public static void main(String[] args) {
@@ -48,7 +56,7 @@ public class Task6 {
 
 
         // Uncomment the above block and comment out the line below if you want to prompt the user for server selection
-        executeTelnet("india.colorado.edu", 13); // Default option if user input is not used
+//        executeTelnet("india.colorado.edu", 13); // Default option if user input is not used
     }
 
     private static void executeTelnet(String server, int port) {
