@@ -15,8 +15,6 @@ Welche Vor- und Nachteile sehen Sie in der Verwendung des Telnet- Protokolls.
 public class Task6 {
 
     public static void main(String[] args) {
-
-        // Uncomment the following block to allow user input for server selection
         System.out.println("Choose a Telnet server writing the name:");
         //System.out.println("starwars");
         System.out.println("gettime");
@@ -80,7 +78,6 @@ public class Task6 {
                     break;
                 }
             }
-
             telnetClient.disconnect();
         } catch (Exception e) {
             e.printStackTrace();

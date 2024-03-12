@@ -14,8 +14,7 @@ public class Task5_2 {
         System.out.println("Wähle aus \n1. Google\n2. Tagesschau");
         Scanner scanner = new Scanner(System.in);
         int auswahl = Integer.parseInt(scanner.next());
-        
-        HttpClient client = HttpClients.createDefault();
+
         HttpGet request;
         if(auswahl == 1){
             request = new HttpGet(url_google);
@@ -23,11 +22,14 @@ public class Task5_2 {
             request = new HttpGet(url_tagesschau);
         }
         try {
+            HttpClient client = HttpClients.createDefault();
             HttpResponse response = client.execute(request);
             String responseBody = EntityUtils.toString(response.getEntity());
             System.out.println(responseBody);
         } catch(Exception e) {
             System.out.println(e);
+        } finally {
+            scanner.close();
         }
     }
 }
