@@ -25,7 +25,7 @@ public class Task4 {
         NTPUDPClient client = new NTPUDPClient();
 
         Duration timeOut = Duration.ofSeconds(10);
-        client.setDefaultTimeout(timeOut);
+        client.setDefaultTimeout(10000);
         try {
             client.open();
             InetAddress hostAddr = InetAddress.getByName(ntpServerAddress);
