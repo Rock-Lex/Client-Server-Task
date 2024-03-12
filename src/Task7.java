@@ -12,4 +12,5 @@ Optional: Einsatz von Apache Commons Net für den Telnet-Client
  */
 
 public class Task7 {
+
 }
