@@ -42,7 +42,6 @@ public class Task6 {
                 System.out.println("Invalid choice.");
         }
 
-
         // Uncomment the above block and comment out the line below if you want to prompt the user for server selection
         executeTelnet("india.colorado.edu", 13); // Default option if user input is not used
     }
@@ -75,3 +74,49 @@ public class Task6 {
         }
     }
 }
+
+
+
+//Freie telnet server; Quelle: https://store.chipkin.com/articles/telnet-list-of-telnet-servers
+//Freie telnet server; Quelle: https://www.telnet.org/htm/places.htm
+
+
+
+// Notizen
+//get the time
+//String server = "india.colorado.edu";
+//int port = 13; // Standard Telnet-Port
+
+//Telehack
+//String server = "telehack.com";
+//int port = 23;
+
+//Legend of the Red Dragon
+//String server = "lord.stabs.org";
+//int port = 23;
+
+//BatMUD
+//String server = "batmud.bat.org";
+//int port = 23;
+
+
+
+//Cuban Bar (not working, exit code 130)
+//String server = "52.88.68.92";
+//int port = 1234;
+
+//weather (not working, exit code 130)
+//String server = "rainmaker.wunderground.com";
+//int port = 3000;
+
+//starwars (not working, exit code 130)
+//String server = "towel.blinkenlights.nl";
+//int port = 23;
+
+//Avalon: The Legend Lives (not working, connection refused)
+//String server = "avalon-rpg.com";
+//int port = 23;
+
+//Zombie MUD (not working, exit code 130)
+//String server = "zombiemud.org";
+//int port = 23;
