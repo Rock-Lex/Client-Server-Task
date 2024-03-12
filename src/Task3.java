@@ -3,6 +3,17 @@ import java.io.InputStream;
 import java.net.Socket;
 import java.util.Scanner;
 
+/*
+Verwenden Sie eine einfache Socket-Verbindung für die Abfrage des auf UNIX-Systemen verfügbaren DayTime-Service auf Port 13.
+- Verbindung aufbauen
+- Daten lesen bzw. schreiben
+- Verbindung abbauen
+- Recherchieren Sie nach im Internet frei zugänglichen UNIX-Servern d.h. der Port 13 ist offen! – mindestens 2 Server benennen
+- Übergeben Sie den entsprechenden Hostnamen und berück- sichtigen Sie die dabei ggf. auftretenden Fehler.
+Bem.: Moderne Zeitsynchronisation erfolgt via NTP oder SNTP!
+ */
+
+
 public class Task3 {
     public static void daytime(String input){
         try (Socket socket = new Socket(input, 13)) {

@@ -11,8 +11,8 @@ public class Task6 {
         //int port = 13; // Standard Telnet-Port
 
         //Telehack
-        //String server = "telehack.com";
-        //int port = 23;
+//        String server = "telehack.com";
+//        int port = 23;
 
         //Legend of the Red Dragon
         //String server = "lord.stabs.org";
