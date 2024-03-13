@@ -8,5 +8,11 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="commons-net-3.10.0" level="project" />
+    <orderEntry type="library" name="apache.httpcomponents.httpclient" level="project" />
+    <orderEntry type="library" name="commons-codec-1.11" level="project" />
+    <orderEntry type="library" name="httpcore-4.4.13" level="project" />
+    <orderEntry type="library" name="httpclient-4.5.13" level="project" />
+    <orderEntry type="library" name="commons-logging-1.2" level="project" />
+    <orderEntry type="library" name="commons-codec-1.111" level="project" />
   </component>
 </module>
