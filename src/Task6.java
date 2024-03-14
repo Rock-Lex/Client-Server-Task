@@ -11,46 +11,53 @@ Für welche Anwendungsbereiche (Serverarten, Aufgaben, ...) wurde bzw. wird Teln
 Welche Vor- und Nachteile sehen Sie in der Verwendung des Telnet- Protokolls.
  */
 
-
 public class Task6 {
 
     public static void main(String[] args) {
-        System.out.println("Choose a Telnet server writing the name:");
-        //System.out.println("starwars");
-        System.out.println("gettime");
-        System.out.println("telehack");
-        System.out.println("lord");
-        System.out.println("batmud");
-        //System.out.println("weather");
-        System.out.println("exit\n");
-
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.next();
 
-        switch (input.toLowerCase()) {
-            case "starwars":
-                executeTelnet("towel.blinkenlights.nl", 23);
+        while (true) {
+            System.out.println("\n***************************************** ");
+            System.out.println("Choose a Telnet server writing the name: ");
+            //System.out.println("starwars");
+            System.out.println("gettime");
+            System.out.println("telehack");
+            System.out.println("lord");
+            System.out.println("batmud");
+            //System.out.println("weather");
+            System.out.println("exit");
+            System.out.println("*****************************************\n ");
+            String input = scanner.next();
+
+            switch (input.toLowerCase()) {
+                case "starwars":
+                    executeTelnet("towel.blinkenlights.nl", 23);
+                    break;
+                case "gettime":
+                    executeTelnet("india.colorado.edu", 13);
+                    break;
+                case "telehack":
+                    executeTelnet("telehack.com", 23);
+                    break;
+                case "lord":
+                    executeTelnet("lord.stabs.org", 23);
+                    break;
+                case "batmud":
+                    executeTelnet("batmud.bat.org", 23);
+                    break;
+                case "weather":
+                    executeTelnet("rainmaker.wunderground.com", 3000);
+                    break;
+                case "exit":
+                    executeTelnet("india.colorado.edu", 13);
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+            if (input.equals("exit")) {
                 break;
-            case "gettime":
-                executeTelnet("india.colorado.edu", 13);
-                break;
-            case "telehack":
-                executeTelnet("telehack.com", 23);
-                break;
-            case "lord":
-                executeTelnet("lord.stabs.org", 23);
-                break;
-            case "batmud":
-                executeTelnet("batmud.bat.org", 23);
-                break;
-            case "weather":
-                executeTelnet("rainmaker.wunderground.com", 3000);
-                break;
-            case "exit":
-                executeTelnet("india.colorado.edu", 13);
-                break;
-            default:
-                System.out.println("Invalid choice.");
+            }
         }
 
         // Uncomment the above block and comment out the line below if you want to prompt the user for server selection
