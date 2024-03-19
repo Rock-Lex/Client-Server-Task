@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import org.apache.commons.net.telnet.*;
 
-import static jdk.internal.org.jline.utils.Colors.s;
+//import static jdk.internal.org.jline.utils.Colors.s;
 
 /*
 Analysieren Sie die Möglichkeiten zur Implementierung eines Java-
