@@ -1,7 +1,9 @@
 import org.apache.commons.net.telnet.TelnetClient;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.net.UnknownHostException;
 import java.util.Scanner;
 
 /*
@@ -13,7 +15,11 @@ Welche Vor- und Nachteile sehen Sie in der Verwendung des Telnet- Protokolls.
 
 public class Task6 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        scanner_loop();
+    }
+
+    public static void scanner_loop() throws IOException {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -25,6 +31,10 @@ public class Task6 {
             System.out.println("lord");
             System.out.println("batmud");
             //System.out.println("weather");
+            //System.out.println("sheltering sky");
+            System.out.println("sheltering");
+            //System.out.println("hallowed halls");
+            System.out.println("hallowed");
             System.out.println("exit");
             System.out.println("*****************************************\n ");
             String input = scanner.next();
@@ -48,13 +58,21 @@ public class Task6 {
                 case "weather":
                     executeTelnet("rainmaker.wunderground.com", 3000);
                     break;
+                case "sheltering":
+                    executeTelnet("mush.shelteringcolorado.com", 2601);
+                    break;
+                case "hallowed":
+                    executeTelnet("thehatshop.mudhosting.net", 3000);
+                    break;
+//                case "hallowed" + " " + "halls":
+//                    executeTelnet("thehatshop.mudhosting.net", 3000);
+//                    break;
                 case "exit":
                     executeTelnet("india.colorado.edu", 13);
                     break;
                 default:
                     System.out.println("Invalid choice.");
             }
-
             if (input.equals("exit")) {
                 break;
             }
@@ -64,7 +82,7 @@ public class Task6 {
         // executeTelnet("india.colorado.edu", 13); // Default option if user input is not used
     }
 
-    private static void executeTelnet(String server, int port) {
+    private static void executeTelnet(String server, int port) throws IOException {
         TelnetClient telnetClient = new TelnetClient();
 
         try {
@@ -86,13 +104,11 @@ public class Task6 {
                 }
             }
             telnetClient.disconnect();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 }
-
-
 
 //Freie telnet server; Quelle: https://store.chipkin.com/articles/telnet-list-of-telnet-servers
 //Freie telnet server; Quelle: https://www.telnet.org/htm/places.htm
