@@ -1,0 +1,61 @@
+- Telnet Befehle
+
+    Telnet-Befehle werden durch verschiedene Zeichen unterschieden, wobei das höchstwertige Bit gesetzt ist. Der Datenstromteil von Telnet gewährleistet die Aufnahme von Befehlen, die von Netzbenutzern aufgerufen werden. Befehle werden immer mit dem Dezimalzeichen 255 eingeleitet, das auch als Interpret as command (IAC) bezeichnet wird.
+
+    Zu den definierten Telnet-Befehlen gehören:
+
+    WILL - 251 - Angebot oder Annahme zur Ermöglichung
+
+    WON'T - 252 - Annahme des Angebots zur Deaktivierung
+
+    DO - 253 - Anfordern oder Genehmigen, um den Betrieb zu ermöglichen
+
+    DON'T - 254 - Freigabe nicht genehmigen oder Deaktivierung beantragen
+
+    SE - 240 - Ende der Unterverhandlungsparameter
+
+    NOP - 241 - Kein Betrieb
+
+    DM - 242- Der Telnet-Befehl "data mark" kennzeichnet und lokalisiert eine Telnet-Synch-Sequenz im Datenstrom. (kritisch in Verbindung mit einer dringenden Meldung des Transmission Control Protocol (TCP))
+
+    BRK - 243 - Pause-Befehl. Es zeigt an, dass die Taste "Achtung" oder "Pause" gedrückt wurde
+
+    IP - 244 - Suspendiert, unterbricht oder bricht die Verbindung zum virtuellen Netzwerkterminal ab, die dem spezifischen Prozess entspricht
+
+    AO - 245 - Abbruch der Ausgabe - ermöglicht den Abschluss des Prozesses, sendet aber keine Daten
+
+    AYT - 246 - Dies steht für "Are you there?" - es fordert zur Rücksendung eines sichtbaren Beweises auf, dass das AYT vom Network Virtual Terminal (NVT) empfangen wurde
+
+    EC - 247 - Befehl zum Löschen von Zeichen - der Empfänger des Befehls soll das letzte ungelöschte vorangehende Zeichen löschen
+
+    EL - 248 - Befehl "Zeile löschen" - löscht Zeichen aus dem Datenstrom bis zum vorherigen Carriage Return Line Feed (CRLF), aber nicht einschließlich
+
+    GA - 249 - Der Telnet-Befehl "Go Ahead" - wird hauptsächlich verwendet, um der Gegenseite mitzuteilen, dass sie mit der Datenübertragung beginnen kann
+
+    SB - 250 - Zeigt an, dass eine Unterverhandlung der enthaltenen Optionen folgen soll
+
+    IAC - 255 - Das "Interpret-as-command"-Zeichen
+
+    Quelle: 11.03.2024
+
+*******************************************************
+
+- Telnet Vor- und Nachteile
+
+    Das Telnet-Protokoll bietet einige Vorteile, darunter die Möglichkeit, nahezu standardkonforme TCP-Verbindungen zu nutzen, um verschiedene Dienste zu testen oder zu nutzen, die auf TCP als Transportprotokoll zurückgreifen. Es ermöglicht auch plattformübergreifende Verbindungen, da nur wenige Geräte den offiziellen IETF-Standard nicht unterstützen. Darüber hinaus gewährt Telnet uneingeschränkten Zugriff auf die Ressourcen des angesteuerten Systems, vorausgesetzt, die erforderlichen Berechtigungen sind vorhanden.
+
+    Jedoch birgt Telnet ein erhebliches Sicherheitsrisiko, da weder der Verbindungsaufbau noch die Datenübertragung verschlüsselt sind. Dadurch können sämtliche Informationen, einschließlich Anmeldeinformationen für den Remote-Zugriff, von Dritten im Klartext abgefangen werden. Dies macht das System anfällig für Angriffe und erleichtert eine vollständige Übernahme durch Angreifende. Eine sichere Alternative zu Telnet ist Secure Shell (SSH).
+
+    **Vorteile:**
+
+    - Ermöglicht die Nutzung von TCP-Verbindungen für verschiedene Dienste und Tests.
+    - Plattformübergreifend einsetzbar, da von den meisten Geräten unterstützt.
+    - Gewährt uneingeschränkten Zugriff auf Ressourcen des angesteuerten Systems.
+
+    **Nachteile:**
+
+    - Hohe Sicherheitsrisiken: Verbindungsaufbau und Datenübertragung sind unverschlüsselt.
+    - Informationen können von Dritten im Klartext abgefangen werden, einschließlich Anmeldeinformationen.
+    - Anfällig für Angriffe, erleichtert eine vollständige Übernahme des Systems.
+    - Sicherere Alternative: Secure Shell (SSH).
+
