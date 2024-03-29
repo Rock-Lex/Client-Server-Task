@@ -1,4 +1,4 @@
-/* ExperimentalWebServer.java */
+package uebung2;/* uebung2.ExperimentalWebServer.java */
 
 import java.io.*;
 import java.util.*;
@@ -10,17 +10,17 @@ import java.net.*;
  * Seitenanforderungen lokal zu dem Verzeichnis,
  * aus dem er gestartet wurde, zu bearbeiten. Wurde
  * der Server z.B. im Verzeichnis c:\tmp gestartet, so
- * würde eine Seitenanforderung
+ * wï¿½rde eine Seitenanforderung
  * http://localhost:80/test/index.html die Datei
  * c:\tmp\test\index.html laden. CGIs, SSIs, Servlets
- * oder ähnliches wird nicht unterstützt.
+ * oder ï¿½hnliches wird nicht unterstï¿½tzt.
  * <p>
  * Die Dateitypen .htm, .html, .gif, .jpg und .jpeg werden
- * erkannt und mit korrekten MIME-Headern übertragen, alle
+ * erkannt und mit korrekten MIME-Headern ï¿½bertragen, alle
  * anderen Dateien werden als "application/octet-stream"
- * übertragen. Jeder Request wird durch einen eigenen
- * Client-Thread bearbeitet, nach Übertragung der Antwort
- * schließt der Server den Socket. Antworten werden mit
+ * ï¿½bertragen. Jeder Request wird durch einen eigenen
+ * Client-Thread bearbeitet, nach ï¿½bertragung der Antwort
+ * schlieï¿½t der Server den Socket. Antworten werden mit
  * HTTP/1.0-Header gesendet.
  */
 public class ExperimentalWebServer
@@ -29,7 +29,7 @@ public class ExperimentalWebServer
   {
     if (args.length != 1) {
       System.err.println(
-        "Usage: java ExperimentalWebServer <port>"
+        "Usage: java uebung2.ExperimentalWebServer <port>"
       );
       System.exit(1);
     }
@@ -50,7 +50,7 @@ public class ExperimentalWebServer
 }
 
 /**
- * Die Thread-Klasse für die Client-Verbindung.
+ * Die Thread-Klasse fï¿½r die Client-Verbindung.
  */
 class BrowserClientThread
 extends Thread
@@ -84,7 +84,7 @@ extends Thread
   }
 
   /**
-   * Hauptschleife für den Thread.
+   * Hauptschleife fï¿½r den Thread.
    */
   public void run()
   {
@@ -103,7 +103,7 @@ extends Thread
   }
 
   /**
-   * Liest den nächsten HTTP-Request vom Browser ein.
+   * Liest den nï¿½chsten HTTP-Request vom Browser ein.
    */
   private void readRequest()
   throws IOException
@@ -192,9 +192,9 @@ extends Thread
           //HTTP-Header senden
           out.print("HTTP/1.0 200 OK\r\n");
           System.out.println("> HTTP/1.0 200 OK");
-          out.print("Server: ExperimentalWebServer 0.5\r\n");
+          out.print("Server: uebung2.ExperimentalWebServer 0.5\r\n");
           System.out.println(
-            "> Server: ExperimentalWebServer 0.5"
+            "> Server: uebung2.ExperimentalWebServer 0.5"
           );
           out.print("Content-type: " + mimestring + "\r\n\r\n");
           System.out.println("> Content-type: " + mimestring);
@@ -230,7 +230,7 @@ extends Thread
     out.print("Content-type: text/html\r\n\r\n");
     out.println("<html>");
     out.println("<head>");
-    out.println("<title>ExperimentalWebServer-Error</title>");
+    out.println("<title>uebung2.ExperimentalWebServer-Error</title>");
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>HTTP/1.0 " + code + "</h1>");

@@ -1,3 +1,5 @@
+package uebung2;
+
 import org.apache.commons.net.telnet.TelnetClient;
 
 import java.io.IOException;

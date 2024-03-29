@@ -1,3 +1,5 @@
+package uebung2;
+
 import java.net.UnknownHostException;
 import java.util.Scanner;
 import java.net.InetAddress;

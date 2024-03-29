@@ -1,7 +1,7 @@
-
+package uebung2;
 /*
 Analysieren, beschreiben und testen Sie das übergebene Beispiel eines einfachen Web-Servers.
-- Start des Webservers: java ExperimentalWebServer 80
+- Start des Webservers: java uebung2.ExperimentalWebServer 80
 - Datei index.html im Verzeichnis des Servers (*.class) anlegen
 - Aufruf im Browser  URL http://localhost/index.html
 Bemerkung: der Webserver ist mit Hilfe von Threads implementiert worden (vgl. „nebenläufiger Server“)
@@ -12,6 +12,6 @@ Einfacher WebServers über die Klasse HttpServer (ab Java 6)  Verwendung HTTP-K
 
 public class Task8 {
 
-//    siehe ExperimentalWebServer
+//    siehe uebung2.ExperimentalWebServer
 
 }

@@ -18,6 +18,6 @@ Listening to port 80
 < Accept-Language: de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7
 < Cookie: Webstorm-21468919=c4b745a0-a62a-4cb5-8900-463a785f395a; Pycharm-1ac88fd0=c7e260cb-77cb-4bce-94ec-c587721df19b; wp-settings-time-1=1709197430
 > HTTP/1.0 200 OK
-> Server: ExperimentalWebServer 0.5
+> Server: uebung2.ExperimentalWebServer 0.5
 > Content-type: text/html
 1: Closed.

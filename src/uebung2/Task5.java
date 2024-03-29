@@ -1,4 +1,4 @@
-
+package uebung2;
 
 /*
 Schreiben Sie einen einfachen HTTP-Client welcher den Zugriff auf die Inhalte eines Webservers mittels des GET-Befehls erlaubt.

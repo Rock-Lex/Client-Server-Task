@@ -1,3 +1,5 @@
+package uebung2;
+
 import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.TimeInfo;
 

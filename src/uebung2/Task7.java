@@ -1,3 +1,5 @@
+package uebung2;
+
 import java.io.*;
 import java.net.*;
 import java.nio.Buffer;
