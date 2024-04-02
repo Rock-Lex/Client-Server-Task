@@ -6,6 +6,16 @@ import java.util.Scanner;
 // CREATE DATABASE 'F:\\Programmieren\\Java\\ClientServerTask\\src\\uebung3\\db\\task2db.fdb' USER 'SYSDBA' Password 'masterkey';
 // CONNECT 'F:\\Programmieren\\Java\\ClientServerTask\\src\\uebung3\\db\\task2db.fdb' USER 'SYSDBA' Password 'masterkey';
 // org.firebirdsql.jdbc:jaybird-jdk18:4.0.10.java8
+
+/* 
+
+Bevor ich mich mit dem Java Code mit der Firebase Datenbank verbinden konnte, musste ich das Passwort ändern. Ich weiß nicht wieso da ich das offizielle Windows
+Standardpasswort verwendet habe.
+
+Ohne GUI war es notwendig mehrere, vermutlich unnötige Abfragen zu machen, um den aktuellen Stand der Datenbank zu überprüfen.
+
+ */
+
 public class task2 {
     public static void main(String[] args) {
         ResultSet rs = null;
