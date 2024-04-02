@@ -27,10 +27,11 @@ public class task2 {
                 while(true){
                     System.out.println("Was möchtest du tun?");
                     System.out.println("1. Select*");
-                    System.out.println("2. Select* Where");
-                    System.out.println("3. Daten einfügen");
-                    System.out.println("4. Daten ändern");
-                    System.out.println("5. Daten löschen");
+                    System.out.println("2. Compare Prepared / Not Prepared");
+                    System.out.println("3. Select* Where");
+                    System.out.println("4. Daten einfügen");
+                    System.out.println("5. Daten ändern");
+                    System.out.println("6. Daten löschen");
 
                     System.out.println("0. Verbindung beenden");
                     switch (scanner.nextInt()){
@@ -42,9 +43,68 @@ public class task2 {
                             printResultSet(rs);
                             break;
                         case 2:
+                            long startTimePrepared = System.nanoTime();
+                            ResultSet rsPrepared = selectAllPrepared(conn);
+                            long endTimePrepared = System.nanoTime();
+                            printResultSet(rsPrepared);
+                            long startTimeNichtPrepared = System.nanoTime();
+                            ResultSet rsNichtPrepared = selectAllNonPrepared(conn);
+                            long endTimeNichtPrepared = System.nanoTime();
+                            printResultSet(rsNichtPrepared);
+
+                            System.out.println();
+                            System.out.println("Dauer mit Prepared Statement bei Select*: " + (endTimePrepared - startTimePrepared) + " Nanosekunden");
+                            System.out.println("Dauer ohne Prepared Statement bei Select*: " + (endTimeNichtPrepared - startTimeNichtPrepared) + " Nanosekunden");
+
+                            if ((endTimePrepared - startTimePrepared) < (endTimeNichtPrepared - startTimeNichtPrepared)) {
+                                System.out.println("Das Select* mit Prepared Statement war schneller.");
+                            } else if ((endTimePrepared - startTimePrepared) > (endTimeNichtPrepared - startTimeNichtPrepared)) {
+                                System.out.println("Das Select* ohne Prepared Statement war schneller.");
+                            } else {
+                                System.out.println("Beide Methoden hatten die gleiche Ausführungsdauer.");
+                            }
+
+                            startTimePrepared = System.nanoTime();
+                            insertPrepared(conn, "Pre", "pared", 1);
+                            endTimePrepared = System.nanoTime();
+                            startTimeNichtPrepared = System.nanoTime();
+                            insertNonPrepared(conn, "Nicht", "Prepared", 2);
+                            endTimeNichtPrepared = System.nanoTime();
+
+                            System.out.println();
+                            System.out.println("Dauer mit Prepared Statement bei Insert: " + (endTimePrepared - startTimePrepared) + " Nanosekunden");
+                            System.out.println("Dauer ohne Prepared Statement bei Insert: " + (endTimeNichtPrepared - startTimeNichtPrepared) + " Nanosekunden");
+
+                            if ((endTimePrepared - startTimePrepared) < (endTimeNichtPrepared - startTimeNichtPrepared)) {
+                                System.out.println("Das Insert mit Prepared Statement war schneller.");
+                            } else if ((endTimePrepared - startTimePrepared) > (endTimeNichtPrepared - startTimeNichtPrepared)) {
+                                System.out.println("Das Inset ohne Prepared Statement war schneller.");
+                            } else {
+                                System.out.println("Beide Methoden hatten die gleiche Ausführungsdauer.");
+                            }
+
+                            startTimePrepared = System.nanoTime();
+                            updatePrepared(conn, 3, "Pre", "pared", 25); // Aktualisiere Datensatz mit ID 3
+                            endTimePrepared = System.nanoTime();
+                            startTimeNichtPrepared = System.nanoTime();
+                            updateNonPrepared(conn, 4, "Nicht", "Prepared", 30); // Aktualisiere Datensatz mit ID 4
+                            endTimeNichtPrepared = System.nanoTime();
+
+                            System.out.println();
+                            System.out.println("Dauer mit Prepared Statement bei Update: " + (endTimePrepared - startTimePrepared) + " Nanosekunden");
+                            System.out.println("Dauer ohne Prepared Statement bei Update: " + (endTimeNichtPrepared - startTimeNichtPrepared) + " Nanosekunden");
+
+                            if ((endTimePrepared - startTimePrepared) < (endTimeNichtPrepared - startTimeNichtPrepared)) {
+                                System.out.println("Das Update mit Prepared Statement war schneller.");
+                            } else if ((endTimePrepared - startTimePrepared) > (endTimeNichtPrepared - startTimeNichtPrepared)) {
+                                System.out.println("Das Update ohne Prepared Statement war schneller.");
+                            } else {
+                                System.out.println("Beide Methoden hatten die gleiche Ausführungsdauer.");
+                            }
+                        case 3:
                             System.out.println("Noch zu machen");
                             break;
-                        case 3:
+                        case 4:
                             System.out.println("Nachname:");
                             String lastname = scanner.next();
                             System.out.println("Vorname:");
@@ -54,14 +114,15 @@ public class task2 {
 
                             insert(conn, lastname,firstname,age);
                             break;
-                        case 4:
+                        case 5:
                             System.out.println("Noch zu machen");
                             break;
-                        case 5:
+                        case 6:
                             System.out.println("ID:");
                             int delID = scanner.nextInt();
                             deleteById(conn, delID);
                             break;
+
                         default:
                             return;
                     }
@@ -72,12 +133,51 @@ public class task2 {
             e.printStackTrace();
         }
     }
+    private static void updatePrepared(Connection conn, int id, String lastName, String firstName, int age) throws SQLException {
+        String updateSQL = "UPDATE persons SET LastName = ?, FirstName = ?, Age = ? WHERE ID = ?";
+        PreparedStatement pstmt = conn.prepareStatement(updateSQL);
+
+        pstmt.setString(1, lastName);
+        pstmt.setString(2, firstName);
+        pstmt.setInt(3, age);
+        pstmt.setInt(4, id);
+
+        int affectedRows = pstmt.executeUpdate();
+        System.out.println("Anzahl der aktualisierten Zeilen: " + affectedRows);
+
+        pstmt.close();
+    }
+    private static void updateNonPrepared(Connection conn, int id, String lastName, String firstName, int age) throws SQLException {
+        String updateSQL = "UPDATE persons SET LastName = '" + lastName + "', FirstName = '" + firstName + "', Age = " + age + " WHERE ID = " + id;
+
+        Statement stmt = conn.createStatement();
+        int affectedRows = stmt.executeUpdate(updateSQL);
+        System.out.println("Anzahl der aktualisierten Zeilen: " + affectedRows);
+
+        stmt.close();
+    }
+
     private static ResultSet selectAll(Connection conn) throws SQLException {
         String selectSQL = "SELECT * FROM persons";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(selectSQL);
         return rs;
     }
+    private static ResultSet selectAllPrepared(Connection conn) throws SQLException {
+        String selectSQL = "SELECT * FROM persons";
+        PreparedStatement pstmt = conn.prepareStatement(selectSQL);
+        ResultSet rs = pstmt.executeQuery();
+        return rs;
+    }
+
+    private static ResultSet selectAllNonPrepared(Connection conn) throws SQLException {
+        String selectSQL = "SELECT * FROM persons";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(selectSQL);
+        return rs;
+    }
+
+
 
     private static void update(Connection conn) throws SQLException {
         String updateSQL = "UPDATE persons SET Age = ? WHERE ID = ?";
@@ -86,6 +186,49 @@ public class task2 {
         pstmtUpdate.setInt(2, 1);
         pstmtUpdate.executeUpdate();
     }
+    private static void insertNonPrepared(Connection conn, String lastName, String firstName, int age) throws SQLException {
+        // Zuerst die aktuell höchste ID ermitteln
+        String highestIdQuery = "SELECT MAX(ID) FROM persons";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(highestIdQuery);
+        int highestId = 0;
+        if (rs.next()) {
+            highestId = rs.getInt(1);
+        }
+        rs.close();
+        stmt.close();
+
+        int newId = highestId + 1;
+
+        String insertSQL = "INSERT INTO persons (ID, LastName, FirstName, Age) VALUES (" + newId + ", '" + lastName + "', '" + firstName + "', " + age + ")";
+
+        stmt = conn.createStatement();
+        stmt.executeUpdate(insertSQL);
+        stmt.close();
+    }
+    private static void insertPrepared(Connection conn, String lastName, String firstName, int age) throws SQLException {
+        // Zuerst die aktuell höchste ID ermitteln
+        String highestIdQuery = "SELECT MAX(ID) FROM persons";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(highestIdQuery);
+        int highestId = 0;
+        if (rs.next()) {
+            highestId = rs.getInt(1);
+        }
+        rs.close();
+        stmt.close();
+
+        int newId = highestId + 1; // Die neue ID ist die höchste ID plus 1
+        String insertSQL = "INSERT INTO persons (ID, LastName, FirstName, Age) VALUES (?, ?, ?, ?)";
+        PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+        pstmt.setInt(1, newId);
+        pstmt.setString(2, lastName);
+        pstmt.setString(3, firstName);
+        pstmt.setInt(4, age);
+        pstmt.executeUpdate();
+        pstmt.close();
+    }
+
     private static void insert(Connection conn, String lastName, String firstName, int age) throws SQLException {
         // Zuerst die aktuell höchste ID ermitteln
         String highestIdQuery = "SELECT MAX(ID) FROM persons";
